@@ -6,7 +6,7 @@ const Login = () => {
 
   const handleAuth = (e) => {
     e.preventDefault();
-    // Logic for Phase 5: Implementation
+    
     navigate('/overview'); 
   };
 
