@@ -1,47 +1,41 @@
+/* theme.css */
 :root {
-  --bg-deep: #0d1117;
-  --bg-card: rgba(16, 24, 39, 0.85);
+  --bg-deep: #0b0f14;
+  --bg-card: rgba(22, 27, 34, 0.8);
   --neon-cyan: #00f2ff;
   --safety-orange: #ff8c00;
-  --error-red: #ff4d4d;
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
+  --text-main: #f0f6fc;
+  --text-dim: #8b949e;
   --border-glass: rgba(255, 255, 255, 0.1);
 }
 
-* { box-sizing: border-box; }
-
 body {
-  margin: 0;
   background-color: var(--bg-deep);
-  color: var(--text-primary);
-  font-family: 'Inter', system-ui, sans-serif;
-  -webkit-font-smoothing: antialiased;
+  color: var(--text-main);
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  /* Add a subtle dark gradient to match image_08bd41.png */
+  background: radial-gradient(circle at top right, #161b22, #0b0f14);
+  height: 100vh;
 }
 
-.glass-panel {
+.industrial-card {
   background: var(--bg-card);
   backdrop-filter: blur(12px);
   border: 1px solid var(--border-glass);
-  border-radius: 20px;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+  border-radius: 16px;
+  padding: 20px;
 }
 
 .neon-button {
   background: var(--neon-cyan);
-  color: #000;
-  font-weight: 700;
+  color: #0b0f14;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 30px; /* Matching the rounded pill in your image */
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(0, 242, 255, 0.3);
   text-transform: uppercase;
   letter-spacing: 1px;
-  border: none;
-  padding: 14px 28px;
-  border-radius: 12px;
-  cursor: pointer;
-  box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
-  transition: all 0.3s ease;
-}
-
-.neon-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 35px rgba(0, 242, 255, 0.6);
 }
