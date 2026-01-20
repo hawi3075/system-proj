@@ -1,57 +1,25 @@
 import React from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-
-  const menuItems = [
-    { name: 'Overview', path: '/overview', icon: '📊' },
-    { name: 'Machine Status', path: '/status', icon: '⚙️' },
-    { name: 'Inventory Lab', path: '/inventory', icon: '📦' },
-    { name: 'FRACAS Log', path: '/fracas', icon: '⚠️' },
-    { name: 'Analytics', path: '/analytics', icon: '📈' },
-    { name: 'Admin', path: '/admin', icon: '🛡️' },
-  ];
-
   return (
-    <div className="sidebar" style={{
-      width: '260px',
+    <div style={{
+      width: '80px',
       height: '100vh',
-      background: 'rgba(13, 17, 23, 0.95)',
-      borderRight: '1px solid var(--border-glass)',
-      padding: '20px',
-      position: 'fixed',
-      left: 0,
-      top: 0
+      background: '#0d1117',
+      borderRight: '1px solid #30363d',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      paddingTop: '20px',
+      position: 'fixed'
     }}>
-      <div className="logo" style={{ color: 'var(--neon-cyan)', fontWeight: 'bold', marginBottom: '40px', fontSize: '1.2rem' }}>
-        INDUSTRY 4.0
-      </div>
-      
-      <nav>
-        {menuItems.map((item) => (
-          <div 
-            key={item.path}
-            onClick={() => navigate(item.path)}
-            style={{
-              padding: '12px 15px',
-              cursor: 'pointer',
-              borderRadius: '8px',
-              marginBottom: '10px',
-              transition: '0.3s',
-              background: location.pathname === item.path ? 'rgba(0, 242, 255, 0.1)' : 'transparent',
-              color: location.pathname === item.path ? 'var(--neon-cyan)' : 'var(--text-dim)',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '10px'
-            }}
-          >
-            <span>{item.icon}</span>
-            {item.name}
-          </div>
-        ))}
-      </nav>
+      <div style={{ color: 'var(--neon-cyan)', fontSize: '24px', marginBottom: '40px' }}>🛡️</div>
+      <div onClick={() => navigate('/overview')} style={{ cursor: 'pointer', marginBottom: '30px' }}>📊</div>
+      <div onClick={() => navigate('/status')} style={{ cursor: 'pointer', marginBottom: '30px' }}>⚙️</div>
+      <div onClick={() => navigate('/fracas')} style={{ cursor: 'pointer', marginBottom: '30px' }}>⚠️</div>
+      <div onClick={() => navigate('/admin')} style={{ cursor: 'pointer', marginTop: 'auto', marginBottom: '20px' }}>⚙️</div>
     </div>
   );
 };
