@@ -1,22 +1,13 @@
-body {
-  margin: 0;
-  background-color: #0b0f14; /* Deep Slate */
-  color: #f0f6fc; /* Off-white text */
-  font-family: 'Inter', -apple-system, sans-serif;
-  -webkit-font-smoothing: antialiased;
+.page-container {
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-#root {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+h1, h2, h3 {
+  color: #ffffff;
 }
 
-/* Reusable Glassmorphism Card */
-.industrial-card {
-  background: rgba(22, 27, 34, 0.85);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  padding: 24px;
+p {
+  color: #8b949e;
 }
