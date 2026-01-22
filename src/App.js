@@ -1,29 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-
-// Component Imports
 import Sidebar from './components/Sidebar';
 import Landing from './pages/Landing';
 import Login from './pages/Login';
 import Overview from './pages/Overview';
 import MachineStatus from './pages/MachineStatus';
-import FracasLog from './pages/FracasLog';
-import Analytics from './pages/Analytics';
-import Admin from './pages/Admin';
 
-// This helper component checks the current path to hide/show Sidebar
-const Layout = ({ children, isLoggedIn }) => {
+// This wrapper handles the logic of when to show the sidebar
+const MainLayout = ({ children }) => {
   const location = useLocation();
-  // Hide sidebar on Landing (/) and Login (/login)
-  const hideSidebar = location.pathname === '/' || location.pathname === '/login';
+  // Don't show sidebar on Landing or Login pages
+  const showSidebar = location.pathname !== '/' && location.pathname !== '/login';
 
   return (
     <div style={{ display: 'flex' }}>
-      {!hideSidebar && isLoggedIn && <Sidebar />}
+      {showSidebar && <Sidebar />}
       <div style={{ 
         flex: 1, 
-        marginLeft: (!hideSidebar && isLoggedIn) ? '260px' : '0',
-        transition: 'margin 0.3s ease'
+        marginLeft: showSidebar ? '80px' : '0px', // Pushes content so Sidebar doesn't cover it
+        minHeight: '100vh',
+        backgroundColor: '#0b0f14'
       }}>
         {children}
       </div>
@@ -32,23 +28,17 @@ const Layout = ({ children, isLoggedIn }) => {
 };
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   return (
     <Router>
-      <Layout isLoggedIn={isLoggedIn}>
+      <MainLayout>
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="/login" element={<Login onLogin={() => setIsLoggedIn(true)} />} />
-          
-          {/* Protected Industrial Routes */}
+          <Route path="/login" element={<Login />} />
           <Route path="/overview" element={<Overview />} />
           <Route path="/status" element={<MachineStatus />} />
-          <Route path="/fracas" element={<FracasLog />} />
-          <Route path="/analytics" element={<Analytics />} />
-          <Route path="/admin" element={<Admin />} />
+          {/* Add other routes as needed */}
         </Routes>
-      </Layout>
+      </MainLayout>
     </Router>
   );
 }
